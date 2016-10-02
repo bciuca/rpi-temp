@@ -1,4 +1,4 @@
-// For temp sensor DS18B20
+// For temp sensor DS18B20 on raspberry pi
 // Edit `/boot/config.txt`
 // Add the following line to the end of the file `dtoverlay=w1-gpio,gpiopin=27` <--- change GPIO as needed
 // reboot
