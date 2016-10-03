@@ -1,0 +1,14 @@
+{
+  "name": "rpi-temp",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bciuca/rpi-temp"
+  },
+  "description": "Raspberry Pi temperature sensor",
+  "author": "bogdan ciuca <bogdan.ciuca@gmail.com>",
+  "dependencies": {
+    "onoff": "^1.1.1"
+  },
+  "license": "MIT"
+}
