@@ -14,6 +14,8 @@ const SENSOR_1 = '28-8000002687a0';
 const RELAY_GPIO_PIN = 9;
 const RELAY_GPIO = new Gpio(RELAY_GPIO_PIN, 'out');
 
+let relayValue = null;
+
 function getTemp() {
     const output = fs.readFileSync(`/sys/bus/w1/devices/${SENSOR_1}/w1_slave`).toString();
 
@@ -33,8 +35,14 @@ function getTemp() {
 }
 
 function setRelayValue(value) {
+    if (relayValue === value) {
+        return;
+    }
+    relayValue = value;
+
     console.log(`Setting GPIO ${RELAY_GPIO_PIN} to ${value}`);
-    RELAY_GPIO.writeSync(value);
+    
+    RELAY_GPIO.writeSync(relayValue);
 }
 
 setInterval(() => {
@@ -47,5 +55,5 @@ setInterval(() => {
     else {
         setRelayValue(0);
     }
-    
+
 }, 1000);
