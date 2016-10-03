@@ -11,7 +11,7 @@ const fs = require('fs');
 const Gpio = require('onoff').Gpio;
 
 const SENSOR_1 = '28-8000002687a0';
-const RELAY_GPIO_PIN = 9;
+const RELAY_GPIO_PIN = 17;
 const RELAY_GPIO = new Gpio(RELAY_GPIO_PIN, 'out');
 
 let relayValue = null;
