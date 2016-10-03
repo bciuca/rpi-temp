@@ -14,7 +14,7 @@ const SENSOR_1 = '28-8000002687a0';
 const RELAY_GPIO_PIN = 17;
 const RELAY_GPIO = new Gpio(RELAY_GPIO_PIN, 'out');
 
-let relayValue = null;
+var relayValue = null;
 
 function getTemp() {
     const output = fs.readFileSync(`/sys/bus/w1/devices/${SENSOR_1}/w1_slave`).toString();
