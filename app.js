@@ -25,6 +25,12 @@ function getTemp() {
     }
 
     const raw = parseInt(output.match(/t=(-?\d+)/)[1]);
+    
+    if (isNaN(raw)) {
+        console.warn(`Can't read temperature from output: ${output}`);
+        return null;
+    }
+    
     const c = raw / 1000;
 
     return {
@@ -46,6 +52,7 @@ function setRelayValue(value) {
 }
 
 setInterval(() => {
+
     const temp = getTemp();
     console.log(`${temp.f}°F ${temp.c}°C`);
 
