@@ -52,7 +52,6 @@ function setRelayValue(value) {
 }
 
 setInterval(() => {
-
     const temp = getTemp();
     console.log(`${temp.f}°F ${temp.c}°C`);
 
@@ -62,5 +61,4 @@ setInterval(() => {
     else {
         setRelayValue(0);
     }
-
 }, 1000);
