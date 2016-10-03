@@ -8,8 +8,11 @@
 
 
 const fs = require('fs');
+const Gpio = require('onoff').Gpio;
 
 const SENSOR_1 = '28-8000002687a0';
+const RELAY_GPIO_PIN = 9;
+const RELAY_GPIO = new Gpio(RELAY_GPIO_PIN, 'out');
 
 function getTemp() {
     const output = fs.readFileSync(`/sys/bus/w1/devices/${SENSOR_1}/w1_slave`).toString();
@@ -29,7 +32,20 @@ function getTemp() {
     };
 }
 
+function setRelayValue(value) {
+    console.log(`Setting GPIO ${RELAY_GPIO_PIN} to ${value}`);
+    RELAY_GPIO.writeSync(value);
+}
+
 setInterval(() => {
     const temp = getTemp();
     console.log(`${temp.f}°F ${temp.c}°C`);
+
+    if (temp.f > 75) {
+        setRelayValue(1);
+    } 
+    else {
+        setRelayValue(0);
+    }
+    
 }, 1000);
