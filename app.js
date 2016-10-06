@@ -14,10 +14,12 @@
 // wire. The sensor data will be grouped by sensor serial
 // number: `/sys/bus/w1/devices/28-xxxxxxxxxxxx/w1_slave`
 //
-//  -- red   -----o 3V3
-//              
-//  -- white --N--o GPIO
-//   |       4.7𝛺
+//  -- red   -------o 3V3
+//               |
+//               Z  4.7𝛺
+//               |
+//  -- white ------o GPIO
+//   |       
 //   |
 //   |- white (nth sensor in series)
 //
