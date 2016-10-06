@@ -5,6 +5,23 @@
 // sudo modprobe w1-gpio
 // sudo modprobe w1-therm
 // cat /sys/bus/w1/devices/{28-xxxxxxxxxx}/w1_slave   <--- the sensor serial number is unique
+//
+//
+// Wiring Diagram:
+//
+// Pullup 4.7𝛺 resistor on GPIO pin and yellow wire data wire.
+// All other sensors can be connected in series on the data
+// wire. The sensor data will be grouped by sensor serial
+// number: `/sys/bus/w1/devices/28-xxxxxxxxxxxx/w1_slave`
+//
+//  -- red   -----o 3V3
+//              
+//  -- white --N--o GPIO
+//   |       4.7𝛺
+//   |
+//   |- white (nth sensor in series)
+//
+//  -- black -----o GND
 
 
 const fs = require('fs');
